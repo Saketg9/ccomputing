@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, json
 with open('records.json') as f:
    all_records = json.load(f)
 app = Flask(__name__)
