@@ -15,9 +15,3 @@ EXPOSE 8080
 
 # When the image is turned into container then run this command to run the app
 CMD ["python","app.py"]
-
-
-
-
-Type a message
-
