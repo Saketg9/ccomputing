@@ -10,17 +10,28 @@ This document contains the step used to create this project.
 8. Convert the json to csv.
 
 
-9. Now we have to prepare our Cassandra image
-  docker pull cassandra:latest
-  docker run --name cassandra-db -d cassandra:latest
-  docker cp facts.csv cassandra-db:/home/facts.csv
-  docker exec -it cassandra-db cqlsh
-  CREATE KEYSPACE facts WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor' : 1};
-  CREATE TABLE facts.data (id text PRIMARY KEY, fact text, , type text, first_name text, last_name text, upvotes int);
-  COPY facts.data (id, fact, type, first_name, last_name, upvotes) FROM '/home/facts.csv' WITH DELIMITER=',' AND HEADER=TRUE;
-  Select * From facts.data
-  docker stop `docker ps -l -q`
-  docker commit -m "Cassendra with data" `docker ps -l -q` cassandra/facts:v1
+9. 
+kubectl create -f cassandra-peer-service.yml 
+
+kubectl create -f cassandra-service.yml 
+
+kubectl create -f cassandra-rc.yml 
+
+kubectl get pods
+
+kubectl cp facts.csv cassandra-qftwq:/home/facts.csv
+
+kubectl exec -it cassandra-qftwq cqlsh
+
+CREATE KEYSPACE facts WITH REPLICATION = {'class' : 'SimpleStrategy', 'replication_factor' : 1};
+
+CREATE TABLE facts.data (id text PRIMARY KEY, fact text, , type text, first_name text, last_name text, upvotes int);
+
+COPY facts.data (id, fact, type, first_name, last_name, upvotes) FROM '/home/facts.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+
+Select * From facts.data;
+
+quit()
 
 
 10.
