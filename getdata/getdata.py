@@ -9,6 +9,11 @@ app = Flask(__name__)
 
 url_template = 'https://cat-fact.herokuapp.com/facts'
 
+@app.route('/', methods=['GET'])
+def hello():
+   return str('<h1>To get the json data from external URI go to http://127.0.0.1:8080/facts</h1>')
+
+
 @app.route('/facts', methods=['GET'])
 def facts():
 
@@ -27,5 +32,5 @@ def facts():
     return jsonify(facts)     # return json file
 
 if __name__=="__main__":
-    app.run(port=8081, debug=True)
+    app.run(port=8080, debug=True)
 
