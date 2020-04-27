@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - image: miratepuffin/cassandralab:latest
-          name: cassandra-db
+          name: cassandra
           env:
             - name: PEER_DISCOVERY_SERVICE
               value: cassandra-peers
