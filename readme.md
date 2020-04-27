@@ -187,9 +187,9 @@ openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 36
 
 The command has the following output. On successful execution it will generate two files certificate (cert.pem) and key (key.pem). We can add them to our webapp directory and mention them in the `app.py` to add ssl feature. We also need to change the port from 8080 to 443 as https works on port 443.
 ```
-Generating a RSA private key
-.........................................................................................................................................................................................................................................................................................................++++
-...........................................................................++++
+Generating a 4096 bit RSA private key
+...................................................................................................................++
+..........................................................................................................................................................................................................................................................++
 writing new private key to 'key.pem'
 -----
 You are about to be asked to enter information that will be incorporated
@@ -199,13 +199,13 @@ There are quite a few fields but you can leave some blank
 For some fields there will be a default value,
 If you enter '.', the field will be left blank.
 -----
-Country Name (2 letter code) [AU]:UK
-State or Province Name (full name) [Some-State]:London
+Country Name (2 letter code) []:UK
+State or Province Name (full name) []:London
 Locality Name (eg, city) []:London
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:QMUL
-Organizational Unit Name (eg, section) []:Computer Science
-Common Name (e.g. server FQDN or YOUR name) []:ec2-54-161-101-189.compute-1.amazonaws.com
-Email Address []:saket_g@hotmail.co.uk
+Organization Name (eg, company) []:QMUL
+Organizational Unit Name (eg, section) []:computer science 
+Common Name (eg, fully qualified host name) []:ec2-54-161-101-189.compute-1.amazonaws.com
+Email Address []:ec18359@qmul.ac.uk
 ```
 
 ### Building a cassandra docker image:
@@ -226,7 +226,7 @@ sudo docker build . -t localhost:32000/cassandra:registry
 ```
 4.
 ```
-sudo docker push localhost:32000/mycassandra:registry
+sudo docker push localhost:32000/cassandra:registry
 ```
 
 ### Deployment of Application in Kubernetes:
